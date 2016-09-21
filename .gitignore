@@ -1,4 +1,5 @@
 config/default.json
+temp/*
 # Logs
 logs
 *.log

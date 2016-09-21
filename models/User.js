@@ -11,8 +11,8 @@ var _User = new Schema({
 });
 
 _User.method("findByName", function(appId, callback) {
-    return this.model('users').find({_id: appId}, callback);
+    return this.model('t_users').find({_id: appId}, callback);
 });
 
 
-exports.User = mongoose.model('users', _User);
+exports.User = mongoose.model('t_users', _User);

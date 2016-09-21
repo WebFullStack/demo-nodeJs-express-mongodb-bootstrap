@@ -35,62 +35,83 @@
     </div>
   </div>
 </div>
+
 <div class="modal fade login-modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form role="form " class="login-form">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" placeholder="Please input your user name!" name="userName" required/>
-                </div>
-                <div class="form-group">
-                    <label >Password</label>
-                    <input type="password" class="form-control" placeholder="Please input your password!" name="password" required/>
-                </div>
-                <div class="footer pull-right">
-                    <a href="#" class="btn register-btn" data-toggle="modal" data-target=".register-modal">注册</a>
-                    <button type="submit" class="btn btn-success pull-right" name="login" onclick="loginEvent(event)">Login</button>
-                </div>
-            </form>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="/applications/importAPI" method="post" enctype="multipart/form-data" class="login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;
+          </button>
+          <h4 class="modal-title" id="importApiModalLabel">
+            登录
+          </h4>
         </div>
-    </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="Please input your user name!" name="userName" required/>
+          </div>
+          <div class="form-group">
+            <label >Password</label>
+            <input type="password" class="form-control" placeholder="Please input your password!" name="password" required/>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn register-btn" data-toggle="modal" data-target=".register-modal">注册</a>
+          <button type="submit" class="btn btn-success pull-right" name="login" onclick="loginEvent(event)">Login</button>
+        </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div>
 </div>
+
 <div class="modal fade register-modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- <form class="register-form" method="post" enctype="multipart/form-data"> -->
-            <form class="register-form">
-                <div class="form-group">
-                  <label>用户名</label>
-                  <input type="text" class="form-control" placeholder="请填写您的用户名" name="userName" required/>
-                </div>
-                <div class="form-group">
-                  <label>手机号码</label>
-                  <input type="text" class="form-control" placeholder="请填写您的手机号码" name="mobile" required/>
-                </div>
-                <div class="form-group">
-                  <label>电子邮箱</label>
-                  <input type="text" class="form-control" placeholder="电子邮箱" name="email" required/>
-                </div>
-                <div class="form-group">
-                  <label>密码</label>
-                  <input type="password" class="form-control" placeholder="输入密码" name="password" required/>
-                </div>
-                <div class="form-group">
-                  <label>确认密码</label>
-                  <input type="password" class="form-control" placeholder="再次输入上面的密码" required/>
-                </div>
-                <div class="form-group">
-                  <label>验证码</label>
-                  <input type="text" class="form-control" id="code" name="code" style="width:120px" placeholder="请输入图片中的字符" required/>
-                  <img src="" id="codeImg" style="width:120px;"/>
-                </div>
-                <div class="footer pull-right">
-                  <a type="button" class="btn" data-dismiss="modal"><span aria-hidden="true">取消</span><span class="sr-only">取消</span></a>
-                  <button type="button" class="btn btn-success pull-right" name="register" onclick="">注册</button>
-                </div>
-            </form>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- <form class="register-form" method="post" enctype="multipart/form-data"> -->
+      <form class="register-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;
+          </button>
+          <h4 class="modal-title" id="importApiModalLabel">
+            登录
+          </h4>
         </div>
-      </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>用户名</label>
+            <input type="text" class="form-control" placeholder="请输入用户名" name="userName" required/>
+          </div>
+          <div class="form-group">
+            <label>手机</label>
+            <input type="text" class="form-control" placeholder="请输入手机号码" name="mobile" required/>
+          </div>
+          <div class="form-group">
+            <label>邮箱</label>
+            <input type="text" class="form-control" placeholder="请输入邮箱" name="email" required/>
+          </div>
+          <div class="form-group">
+            <label>密码</label>
+            <input type="password" class="form-control" placeholder="请输入密码" name="password" required/>
+          </div>
+          <div class="form-group">
+            <label>确认密码</label>
+            <input type="password" class="form-control" placeholder="请确认新密码" required/>
+          </div>
+          <div class="form-group">
+            <label>验证码</label>
+            <input type="text" class="form-control" id="code" name="code" style="width:120px" placeholder="请输入验证码" required/>
+            <img src="" id="codeImg" style="width:120px;"/>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn" data-dismiss="modal"><span aria-hidden="true">取消</span><span class="sr-only">取消</span></a>
+          <button type="button" class="btn btn-success pull-right" name="register" onclick="">注册</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
