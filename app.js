@@ -5,12 +5,22 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var config = require('config');
+var mongoose = require('mongoose');
+var connect = require('connect');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+
+
 var exphbs  = require('express-handlebars');
 
+// 路由设置
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+// app.use(favicon());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -65,6 +75,35 @@ app.use(function(err, req, res, next) {
   });
 });
 
+/// 初始化mongodb的连接池（默认pool=5）
+mongoose.connect(config.get("mongodb.uri"), config.get("mongodb.options"));
+
+app.use(session({
+    secret: 'anywhere',
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({
+        url : config.get("mongodb.uri"),
+        ttl : 60 * 60,
+    })
+}));
+
+/// session拦截器
+app.use(function(req,res,next){
+    app.locals.User = req.session.user;
+    var url = req.originalUrl;
+    if (req.session.user) {
+        next();
+    } else {
+        var filters = ['/','/login','/register'];
+        if (filters.indexOf(url) < 0 && url.indexOf('/users/code') < 0) {
+            res.redirect('/');
+        } else {
+            next();
+        }
+    }
+});
+
 module.exports = app;
 
 var server = app.listen(app.get("port"), function () {
@@ -73,3 +112,5 @@ var server = app.listen(app.get("port"), function () {
 
   console.log("应用实例，访问地址为 http://%s:%s", host, port)
 })
+
+//设置不同的启动环境export NODE_ENV=default && node app.jss

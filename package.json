@@ -6,13 +6,21 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^2.0.1",
     "body-parser": "~1.15.1",
+    "config": "^1.21.0",
+    "connect": "^3.5.0",
+    "connect-mongo": "*",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
+    "debug": "~0.7.4",
     "express": "~4.13.4",
     "express-handlebars": "^3.0.0",
+    "express-session": "*",
     "hbs": "~4.0.0",
-    "morgan": "~1.7.0",
+    "mongoose": "*",
+    "morgan": "~1.0.0",
+    "multer": "^1.2.0",
+    "node-config": "0.0.2",
     "serve-favicon": "~2.3.0"
   }
 }
