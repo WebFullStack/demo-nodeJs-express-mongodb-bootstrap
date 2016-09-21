@@ -1,2 +1,95 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="container" style="background-image:url(images/back.jpg);width:100%;height:680px;background-position:center; background-repeat:repeat-y">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="row clearfix">
+        <div class="col-md-12 column" style="margin-top:20px;">
+          <div class="row clearfix">
+            <div class="col-md-6 column" style="color:white;padding-left:20px;">
+              <h3>Index</h3>
+            </div>
+            <div class="col-md-6 column">
+              <ul class="nav nav-pills pull-right">
+                <li><a href="#">{{User}}</a></li>
+                <li class="active">
+                  <a href="/">首页</a>
+                </li>
+                {{#if User}}
+                <li><a href="#" onclick="logoutEvent()">注销</a></li>
+                {{/if}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row clearfix" style="color:white;margin-top:170px;">
+        <div class="col-md-12 column">
+          <h3 class="text-center">nodeJs express mongodb bootstrap demo</h3>
+          <h1 class="text-center" style="margin-top:30px;">nodeJs express mongodb bootstrap demo</h1>
+          <div class="col-md-12 column text-center" style="margin-top:50px;">
+          {{#unless User}}
+            <a class="btn btn-primary btn-large login-btn" data-toggle="modal" data-target=".login-modal">快速登入</a>
+          {{/unless}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade login-modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:400px;height:250px;margin-top:150px;opacity: 0.9">
+        <div class="modal-content" style="height:100%;padding:30px 40px;">
+            <form role="form " class="login-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" id="userName" placeholder="Please input your user name!" name="userName" required/>
+                </div>
+                <div class="form-group">
+                    <label >Password</label>
+                    <input type="password" class="form-control" id="passWord" placeholder="Please input your password!" name="password" required/>
+                </div>
+                <div class="footer pull-right">
+                    <a href="#" class="btn register-btn" data-toggle="modal" data-target=".register-modal">注册</a>
+                    <button type="submit" class="btn btn-success pull-right" name="login" onclick="loginEvent(event)">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade register-modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:400px;height:550px;margin-top:50px;opacity: 0.9">
+        <div class="modal-content" style="height:100%;padding:30px 40px;">
+            <form class="register-form">
+                <div class="form-group">
+                  <label>用户名</label>
+                  <input type="text" class="form-control" id="userName" placeholder="请填写您的用户名" name="userName" data-bv-notempty-message="用户名不能为空" required/>
+                </div>
+                <div class="form-group">
+                  <label>手机号码</label>
+                  <input type="text" class="form-control" id="mobile" placeholder="请填写您的手机号码" name="mobile" required/>
+                </div>
+                <div class="form-group">
+                  <label>电子邮箱</label>
+                  <input type="text" class="form-control" id="email" placeholder="电子邮箱" name="email" required/>
+                </div>
+                <div class="form-group">
+                  <label>密码</label>
+                  <input type="password" class="form-control" id="passWord" placeholder="输入密码" name="password" required/>
+                </div>
+                <div class="form-group">
+                  <label>确认密码</label>
+                  <input type="password" class="form-control" id="passWord2" placeholder="再次输入上面的密码" required/>
+                </div>
+                <div class="form-group">
+                  <label>验证码</label>
+                  <input type="text" class="form-control" id="code" name="code" style="width:120px" placeholder="请输入图片中的字符" required/>
+                  <img src="" id="codeImg" style="width:120px;"/>
+                </div>
+                <div class="footer pull-right">
+                  <a type="button" class="btn" data-dismiss="modal"><span aria-hidden="true">取消</span><span class="sr-only">取消</span></a>
+                  <button type="button" class="btn btn-success pull-right" name="register" onclick="">注册</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
